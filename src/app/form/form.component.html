@@ -1,0 +1,44 @@
+<form (ngSubmit)="submitForm(form)" #form="ngForm" class="container mt-5">
+    <div class="form-group">
+      <label for="lastName">Last name:</label>
+      <input type="text" class="form-control" name="lastName" required ngModel #lastName="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="firstName">Name:</label>
+      <input type="text" class="form-control" name="firstName" ngModel #firstName="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="group">Group:</label>
+      <input type="text" class="form-control" name="group" required ngModel #group="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <select class="form-control" id="subject" name="subject" [(ngModel)]="defaultSubject">
+        <option value="Ng">Ng</option>
+        <option value="Sub2">Sub2</option>
+        <option value="Sub3">Sub3</option>
+        <option value="Sub4">Sub4</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label style="margin-right: 10px;">
+        <input type="radio" name="gender" value="men" [(ngModel)]="defaultGender" checked> Men
+      </label>
+      <label>
+        <input type="radio" name="gender" value="women" [(ngModel)]="defaultGender"> Women
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        <input type="checkbox" name="checkbox" ngModel #checkbox="ngModel"> Checkbox
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Send</button>
+  </form>
+
+  @if (submitted) 
+{
+    <div>
+        <pre>{{formData | json}}</pre>
+    </div>
+}
